@@ -1,104 +1,166 @@
-# GhostOfMaia
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GhostOfMaia</title>
+</head>
+<body>
 
-GhostOfMaia is a hybrid chess engine that combines Maia 1800 human like intuition with a Stockfish powered tactical safety net resulting in a centaur system that plays around 2000 Elo strength.
+<h1>GhostOfMaia</h1>
 
----
+<p>
+GhostOfMaia is a hybrid chess engine that combines Maia 1800 human-like intuition with a Stockfish tactical safety net, making a centaur system that plays around 2000 Elo strength.
+</p>
 
-## Performance Analysis of GhostOfMaia Bridging the Tactical Gap
+<hr>
 
----
+<h2>Introduction</h2>
 
-### Introduction
+<p>
+A big problem in chess engine design is balancing human-like intuition with accurate calculation. Maia neural networks are good at copying human play, but they often miss tactics and immediate threats.
+</p>
 
-A central challenge in chess engine development is balancing human like intuition with machine level precision. Standalone neural networks specifically the Maia series excel at mimicking human playstyles but suffer from tactical myopia an inability to calculate immediate threats.
+<p>
+GhostOfMaia was made to fix this. It wraps Maia 1800 weights with a tactical safety layer powered by Stockfish at Skill Level 6. The goal is to keep human-style play while avoiding simple blunders.
+</p>
 
-GhostOfMaia was developed as a Centaur Hybrid to solve this. By wrapping the Maia 1800 weights in a tactical safety layer powered by Stockfish at Skill Level 6 we aimed to create an engine that maintains a human style while refusing to commit basic blunders that affect standalone models.
+<hr>
 
----
+<h2>Methodology</h2>
 
-### Methodology
+<p>
+We ran a 140 game round robin tournament to test GhostOfMaia against different engines. The pool included Monarch, Rybka, Fruit, Garbochess, and Maia models from 1500 to 1900.
+</p>
 
-We conducted a 140 game round robin tournament to test the GhostOfMaia architecture against a diverse field. The pool included classical engines Monarch Rybka Fruit and Garbochess and the full suite of Maia models from 1500 to 1900.
+<p>
+The setup uses Maia 1800 as the main move generator, checked with a 2.5 pawn blunder threshold.
+</p>
 
-The Hybrid Configuration uses Maia 1800 as the primary move generator filtered through a 2.5 pawn blunder threshold.
+<p>
+The average Elo of the pool was about 1788. Engine Elo is usually lower than human online ratings. A performance rating of 1850 in this pool likely translates to around 2000–2100 on Lichess or Chess.com.
+</p>
 
-The Pool Dynamics show that the average Elo of the reference pool was approximately 1788. Engine pool Elo is typically deflated compared to human online ratings. A performance rating of 1850 in this pool suggests a functional strength significantly higher in human centric environments estimated around 2000 to 2100 on Lichess or Chess.com.
+<hr>
 
----
+<h2>Results: Safety Net Effect</h2>
 
-### Results The Success of the Safety Net
+<img width="979" height="553" src="https://github.com/user-attachments/assets/8830957a-e9c1-42b5-b825-17f54ace34ac">
 
-<img width="979" height="553" alt="image" src="https://github.com/user-attachments/assets/8830957a-e9c1-42b5-b825-17f54ace34ac" />
+<img width="531" height="338" src="https://github.com/user-attachments/assets/202358fc-9d33-44cb-9318-604dd67497c0">
 
-<img width="531" height="338" alt="image" src="https://github.com/user-attachments/assets/202358fc-9d33-44cb-9318-604dd67497c0" />
+<img width="361" height="357" src="https://github.com/user-attachments/assets/6b585ac5-b460-4ef5-993f-28956408519b">
 
-<img width="361" height="357" alt="image" src="https://github.com/user-attachments/assets/6b585ac5-b460-4ef5-993f-28956408519b" />
+<p>
+GhostOfMaia scored 58.9% with 57 wins, 51 draws, and 32 losses, giving a tournament performance rating of 1850.
+</p>
 
-GhostOfMaia achieved a 58.9 percent score with 57 wins 51 draws and 32 losses yielding a Tournament Performance Rating of 1850.
+<p>
+One key result is the draw-to-loss ratio. Fruit 2.3.1 had 41 losses, while GhostOfMaia had 32. It also had 51 draws, the highest in its group.
+</p>
 
-The most significant data point is the draw to loss ratio. While similarly rated classical engines like Fruit 2.3.1 suffered 41 losses GhostOfMaia suffered only 32. Furthermore GhostOfMaia secured 51 draws the highest in the middle tier of the tournament.
+<p>
+This shows the safety net is working. The engine avoids collapsing under tactical pressure, even when Maia suggests weaker moves.
+</p>
 
-This Iron Defense is the clear fingerprint of the Stockfish safety net. The engine refuses to collapse under tactical pressure even when the underlying Maia 1800 brain suggests a sub optimal move.
+<hr>
 
----
+<h2>The Maia Paradox</h2>
 
-### The Maia Paradox Why Labels Fail
+<p>
+The results show a problem with standalone Maia networks.
+</p>
 
-The tournament data exposed a critical failure in standalone neural networks.
+<p>
+Maia 1900 scored 20.7%, Maia 1800 scored 28.2%, and Maia 1600 scored 40.7%.
+</p>
 
-Maia 1900 scored 20.7 percent and Maia 1800 scored 28.2 percent while Maia 1600 scored 40.7 percent.
+<p><strong>The paradox:</strong></p>
 
-This creates the Maia Paradox
+<ul>
+  <li><strong>Human-style play:</strong> Maia 1900 plays aggressive and complex positions like a strong human.</li>
+  <li><strong>Tactical weakness:</strong> It does not calculate deeply, so it often misses tactics.</li>
+  <li><strong>Exploitation:</strong> Classical engines like Rybka and Fruit punish these mistakes.</li>
+  <li><strong>Result:</strong> Maia 1600 does better because it plays more safely.</li>
+</ul>
 
-Human Ambition  
-Maia 1900 successfully mimics the sharp aggressive and tactically complex style of a 1900 rated human
+<hr>
 
-Tactical Blindness  
-Because standalone Maia does not calculate it runs at 1 node it enters these high level tactical complications without the ability to navigate them
+<h2>Discussion: GhostOfMaia as the Fix</h2>
 
-Exploitation  
-Classical engines Rybka Fruit easily exploit these aggressive setups
+<p>
+GhostOfMaia fixes this issue.
+</p>
 
-Maia 1600 performs better because it mimics lower level more cautious human play thereby avoiding sharp tactical lines
+<p>
+Even though it uses the same Maia 1800 model (which scored 28.2%), the hybrid version reached 58.9%.
+</p>
 
----
+<p>
+A 2.5 pawn safety buffer lets the engine follow Maia’s plan until it becomes clearly bad. At that point, Stockfish steps in.
+</p>
 
-### Discussion GhostOfMaia as the Solution
+<p>
+This helps the engine keep its human style without falling apart tactically.
+</p>
 
-GhostOfMaia serves as the corrective for the Maia Paradox.
+<p>
+The 1850 rating is from this specific tournament, but it behaves like a strong 1800 human player with better tactical safety.
+</p>
 
-Although it uses the same Maia 1800 brain as the standalone system which scored 28.2 percent GhostOfMaia hybrid architecture doubled its performance to 58.9 percent.
+<hr>
 
-By providing a 2.5 pawn buffer we allowed the engine to follow Maia human plans until the point of tactical failure. At that threshold the safety net intervened.
+<h2>Conclusion</h2>
 
-This effectively unlocked the potential of the Maia 1800 weights allowing it to play its intended human style without constant risk of collapse.
+<p>
+GhostOfMaia shows that combining a human-style model with a tactical engine works better than using either alone.
+</p>
 
-While the 1850 TPR is the mathematical result of this specific tournament it represents an Unbreakable Amateur.
+<p>
+It is not just another Maia network. It is a safer version that avoids blunders.
+</p>
 
-It is an engine that possesses the strategic strength of an 1800 human but with the tactical oversight of a stronger engine.
+<p>
+In this test pool, it performs like a ~2000 human-level opponent.
+</p>
 
----
+<p>
+The main idea is simple: human-style chess needs a calculator to stay stable.
+</p>
 
-### Conclusion
+<p>
+GhostOfMaia is a proof of concept for a “human-style but safe” chess engine.
+</p>
 
-GhostOfMaia successfully demonstrates that a Centaur architecture is superior to standalone human prediction models.
+<hr>
 
-The data confirms that GhostOfMaia is not merely another Maia net but a tactically hardened system.
+<h2>How To Download</h2>
 
-With a performance rating of 1850 in a deflated engine pool it functions as a solid 2000 plus human equivalent opponent.
+<p>
+Download the GhostOfMaia RAR file from the Google Drive link. Extract it into a folder on your desktop.
+</p>
 
-The broader implication is that for a human style engine to be viable it must be supported by a calculator.
+<p>
+Make sure <code>lc0.exe</code>, <code>stockfish.exe</code>, and the Maia weights file are in the same folder as GhostOfMaia.exe.
+</p>
 
-GhostOfMaia stands as a proof of concept for a new category of engine the human style tactician that refuses to blunder.
+<p>
+Open Lucas Chess, go to Options → Engines → External engines. Click Add and select GhostOfMaia.exe.
+</p>
 
----
+<p>
+Lucas Chess will test it. Once it appears in the list, click Accept.
+</p>
 
-### How To Download?
+<p>
+You can now use it during games.
+</p>
 
-Download the GhostOfMaia RAR file from the provided Google Drive link. Once the download is complete, locate the file in your downloads folder and extract its contents into a new folder on your desktop. Ensure that lc0.exe, stockfish.exe, and the maia weights file are all kept in the same folder as the GhostOfMaia executable.
+<p>
+Google Drive Link:
+<a href="https://drive.google.com/file/d/144h7EmpGrszqUM7iZCYj1DMihmqiVCHV/view?usp=sharing">
+Download GhostOfMaia
+</a>
+</p>
 
-Open Lucas Chess and navigate to the Options menu. Select Engines and then click on External engines. Click the Add button and browse to the folder where you extracted the files. Select GhostOfMaia.exe and click Open. Lucas Chess will run a brief test to verify the UCI connection. Once the name GhostOfMaia appears in your engine list, click Accept to finalize the installation. You can now select the engine from the move menu during any game.
-
-Google Drive Link: https://drive.google.com/file/d/144h7EmpGrszqUM7iZCYj1DMihmqiVCHV/view?usp=sharing
-
-
+</body>
+</html>
