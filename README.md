@@ -132,7 +132,6 @@ GhostOfMaia is a proof of concept for a “human-style but safe” chess engine.
 
 <hr>
 
-<hr>
 
 <h2>Weaknesses</h2>
 
