@@ -132,6 +132,48 @@ GhostOfMaia is a proof of concept for a “human-style but safe” chess engine.
 
 <hr>
 
+<hr>
+
+<h2>Weaknesses</h2>
+
+<p>
+This project works as a proof of concept, but there are still some clear weaknesses in how it was tested and presented:
+</p>
+
+<ul>
+  <li>
+    <strong>Small test size:</strong> 140 games is not enough to fully prove strength. A larger number of games would give more reliable results.
+  </li>
+
+  <li>
+    <strong>Limited opponents:</strong> The engine pool is not very wide. Testing against more modern and stronger engines would make results more solid.
+  </li>
+
+  <li>
+    <strong>No statistical testing:</strong> The results only show wins, draws, and losses. There are no confidence scores, error ranges, or deeper analysis to prove the strength difference is real and not random.
+  </li>
+
+  <li>
+    <strong>Hard to reproduce:</strong> The setup is not fully open. Without full code, exact settings, and game records (PGNs), other people cannot easily repeat the experiment.
+  </li>
+
+  <li>
+    <strong>Elo comparison is uncertain:</strong> Saying it becomes “2000+ human level” is not strongly proven. Engine Elo and human online Elo don’t match directly without proper calibration.
+  </li>
+
+  <li>
+    <strong>Not enough breakdown testing:</strong> There is no study of how different settings affect performance (like changing Stockfish strength or pawn threshold).
+  </li>
+
+  <li>
+    <strong>No human testing:</strong> The engine is not tested against real human players, so “human-like strength” is still an assumption.
+  </li>
+</ul>
+
+<p>
+Overall, the idea is strong and interesting, but it needs more testing, more data, and more transparency to be considered fully solid or publishable.
+</p>
+
 <h2>How To Download</h2>
 
 <p>
