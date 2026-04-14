@@ -13,13 +13,16 @@ A central challenge in chess engine development is balancing human like intuitio
 <img width="979" height="553" alt="image" src="https://github.com/user-attachments/assets/8830957a-e9c1-42b5-b825-17f54ace34ac" />
 
 
+
 We conducted a 140 game round robin tournament to test the GhostOfMaia architecture against a diverse field. The pool included classical engines Monarch Rybka Fruit and Garbochess and the full suite of Maia models from 1500 to 1900.
 
 The Hybrid Configuration uses Maia 1800 as the primary move generator filtered through a 2.5 pawn blunder threshold.
 
 The Pool Dynamics show that the average Elo of the reference pool was approximately 1788. Engine pool Elo is typically deflated compared to human online ratings. A performance rating of 1850 in this pool suggests a functional strength significantly higher in human centric environments estimated around 2000 to 2100 on Lichess or Chess.com.
 
+
 <img width="531" height="338" alt="image" src="https://github.com/user-attachments/assets/202358fc-9d33-44cb-9318-604dd67497c0" />
+
 
 
 ### Results The Success of the Safety Net
