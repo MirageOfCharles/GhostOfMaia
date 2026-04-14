@@ -133,44 +133,53 @@ GhostOfMaia is a proof of concept for a “human-style but safe” chess engine.
 <hr>
 
 
-<h2>Weaknesses</h2>
+<hr>
+
+<h2 id="weaknesses">Project Limitations & Future Research</h2>
 
 <p>
-This project works as a proof of concept, but there are still some clear weaknesses in how it was tested and presented:
+While GhostOfMaia successfully demonstrates the potential of the Centaur Hybrid architecture, the current results represent a foundational stage of development. To move beyond a proof of concept toward a more complete chess benchmark, several improvements are acknowledged:
 </p>
 
 <ul>
   <li>
-    <strong>Small test size:</strong> 140 games is not enough to fully prove strength. A larger number of games would give more reliable results.
+    <strong>Sample Size & Statistical Significance:</strong>
+    A 140-game round-robin gives an initial idea of performance, but it still has a lot of variance. Running 1,000+ games would make the results more stable and reliable.
   </li>
 
   <li>
-    <strong>Limited opponents:</strong> The engine pool is not very wide. Testing against more modern and stronger engines would make results more solid.
+    <strong>Competitive Diversity:</strong>
+    The current test pool is useful for baseline comparison, but future testing should include more modern and varied engines to better understand real-world strength.
   </li>
 
   <li>
-    <strong>No statistical testing:</strong> The results only show wins, draws, and losses. There are no confidence scores, error ranges, or deeper analysis to prove the strength difference is real and not random.
+    <strong>Metric Analysis:</strong>
+    The current results are based mainly on win/draw/loss percentages. Adding deeper metrics like confidence ranges or Elo error margins would make the analysis stronger and more precise.
   </li>
 
   <li>
-    <strong>Hard to reproduce:</strong> The setup is not fully open. Without full code, exact settings, and game records (PGNs), other people cannot easily repeat the experiment.
+    <strong>Data Transparency & Reproducibility:</strong>
+    Future versions should include full PGN logs and full configuration details so others can reproduce the results exactly and verify the findings.
   </li>
 
   <li>
-    <strong>Elo comparison is uncertain:</strong> Saying it becomes “2000+ human level” is not strongly proven. Engine Elo and human online Elo don’t match directly without proper calibration.
+    <strong>Human Elo Correlation:</strong>
+    Converting engine performance into human Elo is only an estimate. More direct testing against real human players is needed to confirm if the “2000+ human level” claim is accurate.
   </li>
 
   <li>
-    <strong>Not enough breakdown testing:</strong> There is no study of how different settings affect performance (like changing Stockfish strength or pawn threshold).
+    <strong>Parameter Optimization:</strong>
+    The current 2.5-pawn threshold and Stockfish level were chosen manually. A proper test across different values would show which settings actually give the best balance.
   </li>
 
   <li>
-    <strong>No human testing:</strong> The engine is not tested against real human players, so “human-like strength” is still an assumption.
+    <strong>Human-Like Behavior Testing:</strong>
+    More testing is needed to see if the engine truly feels human-like in play, or if the Stockfish corrections make its style noticeable or inconsistent.
   </li>
 </ul>
 
 <p>
-Overall, the idea is strong and interesting, but it needs more testing, more data, and more transparency to be considered fully solid or publishable.
+Overall, the results show that the GhostOfMaia system is a strong improvement over standalone models. With more testing, better data collection, and full reproducibility, it could become a more solid benchmark for hybrid chess engines.
 </p>
 
 <h2>How To Download</h2>
