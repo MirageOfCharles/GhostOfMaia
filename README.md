@@ -90,3 +90,15 @@ With a performance rating of 1850 in a deflated engine pool it functions as a so
 The broader implication is that for a human style engine to be viable it must be supported by a calculator.
 
 GhostOfMaia stands as a proof of concept for a new category of engine the human style tactician that refuses to blunder.
+
+---
+
+### How To Download?
+
+Download the GhostOfMaia RAR file from the provided Google Drive link. Once the download is complete, locate the file in your downloads folder and extract its contents into a new folder on your desktop. Ensure that lc0.exe, stockfish.exe, and the maia weights file are all kept in the same folder as the GhostOfMaia executable.
+
+Open Lucas Chess and navigate to the Options menu. Select Engines and then click on External engines. Click the Add button and browse to the folder where you extracted the files. Select GhostOfMaia.exe and click Open. Lucas Chess will run a brief test to verify the UCI connection. Once the name GhostOfMaia appears in your engine list, click Accept to finalize the installation. You can now select the engine from the move menu during any game.
+
+Google Drive Link: https://drive.google.com/file/d/144h7EmpGrszqUM7iZCYj1DMihmqiVCHV/view?usp=sharing
+
+
