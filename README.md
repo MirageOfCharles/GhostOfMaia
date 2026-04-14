@@ -132,51 +132,53 @@ GhostOfMaia is a proof of concept for a “human-style but safe” chess engine.
 
 <hr>
 
+<hr>
+
 <h2 id="weaknesses">Project Limitations & Future Research</h2>
 
 <p>
-While GhostOfMaia successfully demonstrates the potential of the Centaur Hybrid architecture, the current results represent a foundational stage of development. To move beyond a proof of concept toward a more complete chess benchmark, several improvements are acknowledged:
+While GhostOfMaia shows that the Centaur Hybrid idea works, this is still an early version. The results are good as a proof of concept, but there are still clear limits in how it was tested.
 </p>
 
 <ul>
   <li>
-    <strong>Sample Size & Statistical Significance:</strong>
-    A 140-game round-robin gives an initial idea of performance, but it still has a lot of variance. Running 1,000+ games would make the results more stable and reliable.
+    <strong>Sample size is small:</strong>
+    140 games is a decent start, but it’s still not enough to fully prove strength. More games (like 1,000+) would make the results more reliable and less random.
   </li>
 
   <li>
-    <strong>Competitive Diversity:</strong>
-    The current test pool is useful for baseline comparison, but future testing should include more modern and varied engines to better understand real-world strength.
+    <strong>Limited engine pool:</strong>
+    The opponents are useful for testing, but the pool is still small and not very modern. Testing against stronger and more diverse engines would give a better picture of real strength.
   </li>
 
   <li>
-    <strong>Metric Analysis:</strong>
-    The current results are based mainly on win/draw/loss percentages. Adding deeper metrics like confidence ranges or Elo error margins would make the analysis stronger and more precise.
+    <strong>No real statistical analysis:</strong>
+    The results are only win/draw/loss and performance rating. There are no confidence intervals or error ranges, so we can’t clearly measure how “certain” the improvement is.
   </li>
 
   <li>
-    <strong>Data Transparency & Reproducibility:</strong>
-    Future versions should include full PGN logs and full configuration details so others can reproduce the results exactly and verify the findings.
+    <strong>Hard to fully reproduce:</strong>
+    The setup is described, but not fully open. Without full code, exact settings, and full PGN files, other people can’t easily reproduce the exact results.
   </li>
 
   <li>
-    <strong>Human Elo Correlation:</strong>
-    Converting engine performance into human Elo is only an estimate. More direct testing against real human players is needed to confirm if the “2000+ human level” claim is accurate.
+    <strong>Elo conversion is not exact:</strong>
+    Saying it is “2000+ human level” is only an estimate. Engine Elo and human online ratings don’t directly match without proper calibration.
   </li>
 
   <li>
-    <strong>Parameter Optimization:</strong>
-    The current 2.5-pawn threshold and Stockfish level were chosen manually. A proper test across different values would show which settings actually give the best balance.
+    <strong>No parameter testing:</strong>
+    The 2.5 pawn threshold and Stockfish level were picked, but there’s no testing of other values. We don’t know if this is actually the best setup or just a good one.
   </li>
 
   <li>
-    <strong>Human-Like Behavior Testing:</strong>
-    More testing is needed to see if the engine truly feels human-like in play, or if the Stockfish corrections make its style noticeable or inconsistent.
+    <strong>No human testing:</strong>
+    The engine was only tested against other engines, not real humans, so the “human-like strength” part is still an assumption.
   </li>
 </ul>
 
 <p>
-Overall, the results show that the GhostOfMaia system is a strong improvement over standalone models. With more testing, better data collection, and full reproducibility, it could become a more solid benchmark for hybrid chess engines.
+Overall, the idea is solid and clearly works as a hybrid system, but it still needs more games, better testing, and more open data before it can be considered fully proven or publishable.
 </p>
 
 <h2>How To Download</h2>
